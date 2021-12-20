@@ -2,7 +2,7 @@
 
 The testscripts are created for Touchstone test suites.
 
-### MedCom Hospitalnotification testscripts
+### MedCom FFB-Reporting testscripts
 
 
 

@@ -2,7 +2,7 @@
   "package-id": "medcom",
   "canonical": "http://example.org/fhir/fish",
   "title": "Hospital notification testscripts",
-  "introduction": "Testscripts for Hospitalnotification",
+  "introduction": "Testscripts for FFB-Reporting",
   "list": [
     {
       "version": "current",

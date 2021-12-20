@@ -6,8 +6,8 @@
 id: medcom
 canonical: http://example.org/fhir/fish
 version: 0.1.0
-name: Hospitalnotification Testscripts
-title: HospitalNotification Testscripts
+name: FFB-reporting Testscripts
+title: FFB-reporting Testscripts
 status: draft
 publisher: Anders Jensen
 contact:
@@ -15,7 +15,7 @@ contact:
     telecom:
       - system: email
         value: fhir@medcom.dk
-description: Testscripts for HospitalNotification
+description: Testscripts for FFB-reporting
 license: CC0-1.0
 fhirVersion: 4.0.1
 parameters:

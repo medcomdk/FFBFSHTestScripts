@@ -3,8 +3,8 @@
   "id": "medcom",
   "url": "http://example.org/fhir/fish/ImplementationGuide/medcom",
   "version": "0.1.0",
-  "name": "HospitalnotificationTestscripts",
-  "title": "HospitalNotification Testscripts",
+  "name": "FFBreportingTestscripts",
+  "title": "FFB-reporting Testscripts",
   "status": "draft",
   "contact": [
     {
@@ -17,7 +17,7 @@
       ]
     }
   ],
-  "description": "Testscripts for HospitalNotification",
+  "description": "Testscripts for FFB-reporting",
   "packageId": "medcom",
   "license": "CC0-1.0",
   "fhirVersion": [
