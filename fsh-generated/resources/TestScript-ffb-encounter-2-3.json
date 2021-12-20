@@ -499,16 +499,6 @@
         },
         {
           "assert": {
-            "description": "Confirm that the Bundle contains a ServiceRequest MunicipalityCaseNumber",
-            "direction": "request",
-            "expression": "Bundle.entry.resource.ofType(ServiceRequest).extension.where(url= 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-municipalityCaseNumber').extension.where(url= 'municipalitySpecific').value.value",
-            "operator": "equals",
-            "value": "${municipalityCaseNumber}",
-            "warningOnly": false
-          }
-        },
-        {
-          "assert": {
             "description": "Confirm that the Condition 4934e45a-0f93-4c23-a767-2b681378700b exist in Bundle",
             "direction": "request",
             "expression": "Bundle.entry.resource.ofType(Condition).code.coding.where(code ='4934e45a-0f93-4c23-a767-2b681378700b').exists()",
