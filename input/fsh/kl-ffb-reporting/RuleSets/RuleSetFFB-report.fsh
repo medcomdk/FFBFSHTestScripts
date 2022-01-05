@@ -1,102 +1,3 @@
-//Second documentation phase. Check: citizen, same CaseNumber
-RuleSet: CreateFfbReportCaseinsightTest(number, fixture)
-* insert originClient
-* insert destinationServer
-* insert fixtureFfb({number}, {fixture})
-* insert actionOperationFfb({number})
-* insert profileFfb
-//validation
-//* insert validation
-
-* insert variableMunicipalityCaseNumber({number})
-* insert variablePatientIdentifier({number})
-* insert variableServiceRequestFullUrl({number}) //Only assign in first test
-* insert variableClinicalImpressionId({number})
-
-* insert testEffectiveDateTimeLtBundleTime
-* insert testEffectiveDateTimeBeforeNow
-* insert testClinicalImpressionStatus(in-progress)
-
-
-//Test: Is Conditions Existing in the bundle
-* insert testConditionsExists
-
-//Test: is the number of FindingRefferences and Conditions the same. 
-* insert testSameNoOfFindingRefAndCondition
-
-
-
-//Test: Is the Severity.code matching the expected Condition code.
-// from 2en encounter https://build.fhir.org/ig/hl7dk/kl-ffb-reporting/example.html#2nd-encounter--second-documentation-phase--case-insight 
-* insert testSeverityMatchSpeceficCode(3f9da5ac-9686-4eeb-b517-b46e17fcb1d7, 5bdde847-2837-416b-ab63-bbff8b7aa531)
-* insert testSeverityMatchSpeceficCode(685e8517-2f5c-4ef8-a7c4-fa2d008fdd9d, 8328ce4a-6238-4f73-bf1a-74aadb68eff8)
-* insert testSeverityMatchSpeceficCode(464a2ab6-a7df-4b3a-b74d-7873f4cfe668, cae545f5-2813-4d79-98fc-0a7d770af3cd)
-* insert testSeverityMatchSpeceficCode(01770afa-cd17-41fe-a966-b8895e4d55d8, 5bdde847-2837-416b-ab63-bbff8b7aa531)
-* insert testSeverityMatchSpeceficCode(eff3385d-01fa-4c9c-9850-52e179243f21, cae545f5-2813-4d79-98fc-0a7d770af3cd)
-
-* insert testconditionCodesExists
-* insert testConditionRecordedDateLtBundleTime
-* insert testConditionClinicalStatusActive
-* insert testConditionVerificationStatusEqConfirmed
-
-
-
-//Third documentation phase 
-RuleSet: CreateFfbReportCaseassesment(number, fixture)
-* insert originClient
-* insert destinationServer
-* insert fixtureFfb({number}, {fixture})
-* insert actionOperationFfb({number})
-* insert testClinicalImpressionContainsRefMunicipalityCaseNumber
-//Only relevant for n+1 test
-* insert testPatientIdentifirEqualsFirst
-* insert testMunicipalityCaseNumberEqualsFist
-* insert testServiceRequestEqualsFirst
-* insert testConditionsExists
-* insert testSameNoOfFindingRefAndCondition
-
-//validation
-//* insert validation
-
-//below specific tests for 3rd encounter.
-
-//Test: that the CarePlanEvalutionCode Let støttebehov exists
-* insert testCarePlanEvaluationCode(dd628e73-d6c9-4837-a2b8-aa62d73bd6ae) 
-
-//Test: changevalue: Let nedsat funktionsevne  is of taget.type funktionsevneniveau (66959f77-6e2a-4574-8423-3ff097f8b9fa) 
-* insert testGoalTargetTypeValueIsFunktionsevneniveau(8328ce4a-6238-4f73-bf1a-74aadb68eff8) 
-
-//Test: changevalue: Ingen nedsat funktionsevne is of taget.type funktionsevneniveau (66959f77-6e2a-4574-8423-3ff097f8b9fa) 
-* insert testGoalTargetTypeValueIsFunktionsevneniveau(b508ff66-6326-4862-a6d7-7bbf184c9823) 
-
-//Test: changevalue: Svært nedsat funktionsevne is of taget.type funktionsevneniveau (66959f77-6e2a-4574-8423-3ff097f8b9fa) 
-* insert testGoalTargetTypeValueIsFunktionsevneniveau(cae545f5-2813-4d79-98fc-0a7d770af3cd) 
-
-//Test: changevalue: Fastholde funktionsevne is of taget.type funktionsevneniveau (66959f77-6e2a-4574-8423-3ff097f8b9fa) 
-* insert testGoalTargetTypeValueIsFunktionsevneniveau(cae545f5-2813-4d79-98fc-0a7d770af3cd) 
-
-//Test: The numbers of Ranked GoalConditions is 5 according to DeliveryReport-3rd-Encounter
-* insert testGoalConditionRankCount(5)
-
-//Goal can be found in the 3th encounter instance
-* insert testGoal83fdfed2-f182-4a11-8ea1-de8181e6eab9
-
-//Goal can be found in the 3th encounter instance
-* insert testGoalfcbf670a-f310-485b-b717-07c027c3c808
-
-//Goal can be found in the 3th encounter instance
-* insert testGoal90fa089a-1f80-40d0-96db-8e875e241b06
-
-* insert testGoallifecycleStatusActive
-
-* insert testconditionCodesExists
-
-* insert testEffectiveDateTimeLtBundleTime
-* insert testEffectiveDateTimeBeforeNow
-* insert testClinicalImpressionStatus(completed)
-* insert testConditionRecordedDateLtBundleTime
-
-
 /*Isolated Testmothods*/
 RuleSet: testClinicalImpressionContainsRefMunicipalityCaseNumber
 * test[=].action[+].assert.description = "Confirm that the ClinicalImpression contains reference to the ServiceRequest MunicipalityCaseNumber"
@@ -175,6 +76,13 @@ RuleSet: testConditionCode(code)
 * test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(Condition).code.coding.where(code ='{code}').exists()"
 * test[=].action[=].assert.warningOnly = false
 
+//Check for specific Condition.codes  occurs x time in the bundle
+RuleSet: testConditionCodeCount(code, noOfOccur)
+* test[=].action[+].assert.description = "Confirm that the Condition {code} occures {noOfOccur} in Bundle"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(Condition).code.coding.where(code ='{code}').count() = {noOfOccur}"
+* test[=].action[=].assert.warningOnly = false
+
 //Check that Condition severity match specefic code
 RuleSet: testSeverityMatchSpeceficCode(code, severity)
 * test[=].action[+].assert.description = "Confirm that the Condition {code} exist where severity is {severity} in Bundle.Condition"
@@ -192,6 +100,15 @@ RuleSet: testCarePlanEvaluationCode(code)
 * test[=].action[=].assert.operator = #equals
 * test[=].action[=].assert.value = "{code}"
 * test[=].action[=].assert.warningOnly = false
+
+// Test Observation for specific combination of code and value
+RuleSet: testObservationCodeAndValue(code, value)
+* test[=].action[+].assert.description = "Confirm that the observation contains code: {code} and value: {value}"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(Observation).where((code.coding.code ='{code}') and (value.coding.code ='{value}')).count() = 1"
+* test[=].action[=].assert.warningOnly = false
+
+
 
 RuleSet: testCarePlanRefEvalution
 * test[=].action[+].assert.description = "Confirm that the Careplan outcomeReference refference CarePlanEvalution"
@@ -302,6 +219,14 @@ RuleSet: testClinicalImpressionEffectiveDateTimeEqPrevious(number)
 * test[=].action[=].assert.value = "${clinicalImpressionEffectiveDatetime{number}}"
 * test[=].action[=].assert.warningOnly = false
 
+RuleSet: testContainsMunicipalityCaseNumberEqualsFirsMessage
+* test[=].action[+].assert.description = "Confirm that the ClinicalImpression contains reference to the ServiceRequest MunicipalityCaseNumber"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(ClinicalImpression).extension.where(url= 'http://kl.dk/fhir/common/caresocial/StructureDefinition/BasedOnServiceRequest').value.reference"
+* test[=].action[=].assert.operator = #equals
+* test[=].action[=].assert.value = "${ServiceRequestFullUrl}"
+* test[=].action[=].assert.warningOnly = false
+
 //Goal can be found in the 3th instans example entry 18
 RuleSet: testGoal83fdfed2-f182-4a11-8ea1-de8181e6eab9
 * test[=].action[+].assert.description = "Confirm that the Goal contains the correct target and addresses combinations"
@@ -350,7 +275,30 @@ RuleSet: testCareplanIntentPLAN
 RuleSet: testCareplanStatusActive
 * test[=].action[+].assert.description = "Confirm that the Careplan intent is plan"
 * test[=].action[=].assert.direction = #request
-* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(CarePlan).intent = 'plan'"
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(CarePlan).intent = 'active'"
+* test[=].action[=].assert.warningOnly = false
+
+//test intervention specific for encounter 5. no period.end , status = active, intent = order and profile Intervention.
+RuleSet: testCarePlanOfTypeInterventionCount(no)
+* test[=].action[+].assert.description = "Confirm that the Careplan contains {no} interventions"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(CarePlan).where((period.end.exists().not()) and (status = 'active') and (intent = 'order') and (meta.profile = 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-intervention')).count() = {no}"
+* test[=].action[=].assert.warningOnly = false
+
+//test Careplan specific for encounter 5. addresses status and intent
+//param: status = e.g. active, intent = e.g. order and no = No of expected Careplans 
+RuleSet: testCarePlanAddressesCount(careTeamCategory, status, intent, no)
+* test[=].action[+].assert.description = "Confirm that the Careplan contains correct status: {status}, order: {order}, and addresses"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(CarePlan).where((%resource.entry.where(resource.ofType(CareTeam).category.coding.code = '{careTeamCategory}').fullUrl in careTeam.reference) and (status = '{status}') and (intent = '{intent}') and ((%resource.entry.where(resource.ofType(Condition).code.coding.code = '5cfc9530-a193-4f66-9981-3b980ee9ea7b').fullUrl.first().replace('url','') in addresses.reference) and (%resource.entry.where(resource.ofType(Condition).code.coding.code = '5e95db73-4d16-4084-93a3-595c0650b160').fullUrl.first().replace('url','') in addresses.reference))).count()  = {no}"
+* test[=].action[=].assert.warningOnly = false
+
+//test Careplan contains MunicipalityCasenumber from first Encounter
+//param: status = e.g. active, intent = e.g. order and no = No of expected Careplans 
+RuleSet: testCarePlanMunicipalityCaseNumber
+* test[=].action[+].assert.description = "Confirm that the Careplan Careplan contains MunicipalityCasenumber: ${municipalityCaseNumber} from first Encounter"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(CarePlan).extension.where(url= 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-municipalityCaseNumber').all(extension.value.value = '${municipalityCaseNumber}')"
 * test[=].action[=].assert.warningOnly = false
 
 

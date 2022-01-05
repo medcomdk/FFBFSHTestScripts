@@ -60,6 +60,14 @@
       "resource": {
         "reference": "/FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/03Encounter.xml"
       }
+    },
+    {
+      "id": "fix-bundle-create-5",
+      "autocreate": false,
+      "autodelete": false,
+      "resource": {
+        "reference": "/FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/05Encounter.xml"
+      }
     }
   ],
   "test": [
@@ -650,6 +658,112 @@
             "description": "Confirm that the Condition recordedDate is less than or equal to bundle.timestamp",
             "direction": "request",
             "expression": "Bundle.entry.resource.ofType(Condition).all(recordedDate <= %resource.timestamp)",
+            "warningOnly": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "ffb-5",
+      "name": "5 Post ffb-report",
+      "description": "Post ffb-report",
+      "action": [
+        {
+          "operation": {
+            "type": {
+              "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+              "code": "create"
+            },
+            "resource": "Bundle",
+            "description": "Post a ffb-report",
+            "destination": 1,
+            "encodeRequestUrl": true,
+            "origin": 1,
+            "sourceId": "fix-bundle-create-5",
+            "responseId": "bundle-create-5"
+          }
+        },
+        {
+          "assert": {
+            "description": "Confirm that the Citizen Identifier is same as Previous",
+            "direction": "request",
+            "expression": "Bundle.entry.resource.ofType(Patient).identifier.value",
+            "operator": "equals",
+            "value": "${patientIdentifier}",
+            "warningOnly": false
+          }
+        },
+        {
+          "assert": {
+            "description": "Test that there exists at least 1 Condition in the bundle ",
+            "direction": "request",
+            "expression": "Bundle.entry.resource.ofType(Condition).count() > 0",
+            "warningOnly": false
+          }
+        },
+        {
+          "assert": {
+            "description": "Confirm that the CarePlanEvaluationCode is equal to dd628e73-d6c9-4837-a2b8-aa62d73bd6ae",
+            "direction": "request",
+            "expression": "Bundle.entry.resource.ofType(Observation).value.where(coding.system = 'http://kl.dk/fhir/common/caresocial/CodeSystem/FFB').coding.code",
+            "operator": "equals",
+            "value": "dd628e73-d6c9-4837-a2b8-aa62d73bd6ae",
+            "warningOnly": false
+          }
+        },
+        {
+          "assert": {
+            "description": "Confirm that the Condition 5cfc9530-a193-4f66-9981-3b980ee9ea7b occures 2 in Bundle",
+            "direction": "request",
+            "expression": "Bundle.entry.resource.ofType(Condition).code.coding.where(code ='5cfc9530-a193-4f66-9981-3b980ee9ea7b').count() = 2",
+            "warningOnly": false
+          }
+        },
+        {
+          "assert": {
+            "description": "Confirm that the Condition 5cfc9530-a193-4f66-9981-3b980ee9ea7b exist in Bundle",
+            "direction": "request",
+            "expression": "Bundle.entry.resource.ofType(Condition).code.coding.where(code ='5cfc9530-a193-4f66-9981-3b980ee9ea7b').exists()",
+            "warningOnly": false
+          }
+        },
+        {
+          "assert": {
+            "description": "Confirm that the observation contains code: effe55c7-572c-4a99-8fb4-2a9dda2f6572 and value: dd628e73-d6c9-4837-a2b8-aa62d73bd6ae",
+            "direction": "request",
+            "expression": "Bundle.entry.resource.ofType(Observation).where((code.coding.code ='effe55c7-572c-4a99-8fb4-2a9dda2f6572') and (value.coding.code ='dd628e73-d6c9-4837-a2b8-aa62d73bd6ae')).count() = 1",
+            "warningOnly": false
+          }
+        },
+        {
+          "assert": {
+            "description": "Confirm that the Careplan contains 3 interventions",
+            "direction": "request",
+            "expression": "Bundle.entry.resource.ofType(CarePlan).where((period.end.exists().not()) and (status = 'active') and (intent = 'order') and (meta.profile = 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-intervention')).count() = 3",
+            "warningOnly": false
+          }
+        },
+        {
+          "assert": {
+            "description": "Confirm that the Careplan contains correct status: active, order: {order}, and addresses",
+            "direction": "request",
+            "expression": "Bundle.entry.resource.ofType(CarePlan).where((%resource.entry.where(resource.ofType(CareTeam).category.coding.code = '498fe92c-d7f7-41cd-9404-5b38fe113be0').fullUrl in careTeam.reference) and (status = 'active') and (intent = 'plan') and ((%resource.entry.where(resource.ofType(Condition).code.coding.code = '5cfc9530-a193-4f66-9981-3b980ee9ea7b').fullUrl.first().replace('url','') in addresses.reference) and (%resource.entry.where(resource.ofType(Condition).code.coding.code = '5e95db73-4d16-4084-93a3-595c0650b160').fullUrl.first().replace('url','') in addresses.reference))).count()  = 1",
+            "warningOnly": false
+          }
+        },
+        {
+          "assert": {
+            "description": "Confirm that the Careplan contains correct status: active, order: {order}, and addresses",
+            "direction": "request",
+            "expression": "Bundle.entry.resource.ofType(CarePlan).where((%resource.entry.where(resource.ofType(CareTeam).category.coding.code = '9401777d-bdc5-4f52-9804-63c8cae9a792').fullUrl in careTeam.reference) and (status = 'active') and (intent = 'order') and ((%resource.entry.where(resource.ofType(Condition).code.coding.code = '5cfc9530-a193-4f66-9981-3b980ee9ea7b').fullUrl.first().replace('url','') in addresses.reference) and (%resource.entry.where(resource.ofType(Condition).code.coding.code = '5e95db73-4d16-4084-93a3-595c0650b160').fullUrl.first().replace('url','') in addresses.reference))).count()  = 1",
+            "warningOnly": false
+          }
+        },
+        {
+          "assert": {
+            "description": "Confirm that the Careplan Careplan contains MunicipalityCasenumber: ${municipalityCaseNumber} from first Encounter",
+            "direction": "request",
+            "expression": "Bundle.entry.resource.ofType(CarePlan).extension.where(url= 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-municipalityCaseNumber').all(extension.value.value = '${municipalityCaseNumber}')",
             "warningOnly": false
           }
         }

@@ -1,3 +1,4 @@
+//link to encounters http://build.fhir.org/ig/hl7dk/kl-ffb-reporting/example.html
 //1st encounter / First documentation phase / phase – Case opening
 Instance: ffb-1st-encounter
 InstanceOf: TestScript
@@ -8,8 +9,11 @@ InstanceOf: TestScript
 * description = "Testing correct use of encounter phase 2-3"
 //* insert  CreateFfbReportCaseOpeningTest( 1, /FHIRSandbox/MedCom/401-ffb-reporting/_reference/resources/01Encounter.xml)
 
-/*Second documentation phase*/
+/*2nd documentation phase*/
 * insert  CreateFfbReportCaseinsightTest( 2, /FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/02Encounter.xml)
 
-//Third documentation phase 
+//3rd documentation phase 
 * insert CreateFfbReportCaseassesment(3, /FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/03Encounter.xml)
+
+//5th documentation phase 
+* insert CreateFfbReportCaseAppropriation(5, /FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/05Encounter.xml)
