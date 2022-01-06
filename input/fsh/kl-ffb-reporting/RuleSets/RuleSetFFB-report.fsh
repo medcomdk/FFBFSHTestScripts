@@ -21,6 +21,7 @@ RuleSet: testMunicipalityCaseNumberEqualsFist
 * test[=].action[=].assert.value = "${municipalityCaseNumber}"
 * test[=].action[=].assert.warningOnly = false
 
+
 RuleSet: testPatientIdentifierExists
 * test[=].action[+].assert.description = "Confirm that the Citizen contains an Identifier"
 * test[=].action[=].assert.direction = #request
@@ -57,6 +58,13 @@ RuleSet: testServiceRequestEqualsFirst
 * test[=].action[=].assert.value = "${ServiceRequestFullUrl}"
 * test[=].action[=].assert.warningOnly = false
 
+//Test that ServiceRequest has correct status, intent and numbers of instances.
+RuleSet: testServiceRequestStatusIntentCount(status, intent, instances)
+* test[=].action[+].assert.description = "Confirm that the ServiceRequest ServiceRequest has correct status: {status},  intent: {intent} and numbers of instances: {instances}"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(ServiceRequest).where(status = '{status}' and intent = '{intent}').count() = 1"
+* test[=].action[=].assert.warningOnly = false
+
 RuleSet: testConditionsExists
 * test[=].action[+].assert.description = "Test that there exists at least 1 Condition in the bundle "
 * test[=].action[=].assert.direction = #request
@@ -74,6 +82,13 @@ RuleSet: testConditionCode(code)
 * test[=].action[+].assert.description = "Confirm that the Condition {code} exist in Bundle"
 * test[=].action[=].assert.direction = #request
 * test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(Condition).code.coding.where(code ='{code}').exists()"
+* test[=].action[=].assert.warningOnly = false
+
+//Check for specific Condition.codes  and severity
+RuleSet: testConditionCodeAndSeverity(code, severity)
+* test[=].action[+].assert.description = "Confirm that the Condition code: {code} and severity: {severity}  exist in Bundle"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(Condition).where(code.coding.code ='{code}' and severity.coding.code = '{severity}').exists()"
 * test[=].action[=].assert.warningOnly = false
 
 //Check for specific Condition.codes  occurs x time in the bundle
@@ -106,6 +121,13 @@ RuleSet: testObservationCodeAndValue(code, value)
 * test[=].action[+].assert.description = "Confirm that the observation contains code: {code} and value: {value}"
 * test[=].action[=].assert.direction = #request
 * test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(Observation).where((code.coding.code ='{code}') and (value.coding.code ='{value}')).count() = 1"
+* test[=].action[=].assert.warningOnly = false
+
+// Test Observation for specific combination of status, code and value
+RuleSet: testObservationCodeAndValue(status, code, value)
+* test[=].action[+].assert.description = "Confirm that the observation contains status: {status}, code: {code} and value: {value}"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(Observation).where((status = '{status}') and (code.coding.code ='{code}') and (value.coding.code ='{value}')).count() = 1"
 * test[=].action[=].assert.warningOnly = false
 
 
@@ -147,6 +169,12 @@ RuleSet: testClinicalImpressionExists
 * test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(ClinicalImpression).count() > 0"
 * test[=].action[=].assert.warningOnly = false
 
+RuleSet: testClinicalImpressionBasedOnOneServiceRequest
+* test[=].action[+].assert.description = "Confirm that the bundle contains one ClinicalImpression that is BasedOnServiceRequest"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(ClinicalImpression).extension.where(url = 'http://kl.dk/fhir/common/caresocial/StructureDefinition/BasedOnServiceRequest').value.reference = %resource.entry.where(resource.ofType(ServiceRequest)).fullUrl.replace('uri', 'string')"
+* test[=].action[=].assert.warningOnly = false
+
 RuleSet: testEffectiveDateTimeLtBundleTime
 * test[=].action[+].assert.description = "Confirm that the ClinicalImpression.effectiveDateTime is less than or equal to the bundle.timestamp"
 * test[=].action[=].assert.direction = #request
@@ -180,7 +208,7 @@ RuleSet: testBundleTimestampGtPreviousBundle(number)
 RuleSet: testConditionClinicalStatusActive
 * test[=].action[+].assert.description = "Confirm that the Condition clinicalStatus is active"
 * test[=].action[=].assert.direction = #request
-* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(Condition).all(clinicalStatus.coding.code = 'active')"
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(Condition).clinicalStatus.all(coding.code = 'active')"
 * test[=].action[=].assert.warningOnly = false
 
 RuleSet: testConditionRecordedDateLtBundleTime
@@ -192,7 +220,7 @@ RuleSet: testConditionRecordedDateLtBundleTime
 RuleSet: testConditionVerificationStatusEqConfirmed
 * test[=].action[+].assert.description = "Confirm that the Condition verification Status is Confirmed"
 * test[=].action[=].assert.direction = #request
-* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(Condition).all(verificationStatus.coding.code = 'confirmed')"
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(Condition).verificationStatus.all(coding.code = 'confirmed')"
 * test[=].action[=].assert.warningOnly = false
 
 RuleSet: testClinicalImpressionIdEqPrevious(number)

@@ -17,3 +17,6 @@ InstanceOf: TestScript
 
 //5th documentation phase 
 * insert CreateFfbReportCaseAppropriation(5, /FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/05Encounter.xml)
+
+//6th encounter / Sixth documentation phase – Changing case appropriation
+* insert CreateFfbReportCaseChangingCaseAppropriation(6, /FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/06Encounter.xml)
