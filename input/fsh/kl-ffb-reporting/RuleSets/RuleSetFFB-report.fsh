@@ -124,7 +124,7 @@ RuleSet: testObservationCodeAndValue(code, value)
 * test[=].action[=].assert.warningOnly = false
 
 // Test Observation for specific combination of status, code and value
-RuleSet: testObservationCodeAndValue(status, code, value)
+RuleSet: testObservationStatusAndCodeAndValue(status, code, value)
 * test[=].action[+].assert.description = "Confirm that the observation contains status: {status}, code: {code} and value: {value}"
 * test[=].action[=].assert.direction = #request
 * test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(Observation).where((status = '{status}') and (code.coding.code ='{code}') and (value.coding.code ='{value}')).count() = 1"
@@ -327,6 +327,30 @@ RuleSet: testCarePlanMunicipalityCaseNumber
 * test[=].action[+].assert.description = "Confirm that the Careplan Careplan contains MunicipalityCasenumber: ${municipalityCaseNumber} from first Encounter"
 * test[=].action[=].assert.direction = #request
 * test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(CarePlan).extension.where(url= 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-municipalityCaseNumber').all(extension.value.value = '${municipalityCaseNumber}')"
+* test[=].action[=].assert.warningOnly = false
+
+//test Careplan specific for encounter 6.entry 31 followUpDateExtension addresses status and intent and correct profile
+//param: status = e.g. active, intent = e.g. order and no = No of expected Careplans 
+RuleSet: testEncounter6CarePlanEntry31
+* test[=].action[+].assert.description = "Confirm that the Careplan for Encounter 6 entry 31 is of profiletype CarePlan and contains correct status: active, intent: plan, Followupdate, period.end and addresses"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(CarePlan).where((period.end.exists().not()) and ((extension.where(url= 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-follow-up-date-extension').value.reference) = (%resource.entry.where(resource.ofType(Encounter)).fullUrl.replace('url',''))) and (meta.profile = 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-carePlan') and (%resource.entry.where(resource.ofType(CareTeam).category.coding.code = '498fe92c-d7f7-41cd-9404-5b38fe113be0').fullUrl in careTeam.reference) and (status = 'active') and (intent = 'plan') and ((%resource.entry.where(resource.ofType(Condition).code.coding.code = '5cfc9530-a193-4f66-9981-3b980ee9ea7b').fullUrl.first().replace('url','') in addresses.reference) and (%resource.entry.where(resource.ofType(Condition).code.coding.code = '5e95db73-4d16-4084-93a3-595c0650b160').fullUrl.first().replace('url','') in addresses.reference))).count()  = 1"
+* test[=].action[=].assert.warningOnly = false
+
+//test Careplan specific for encounter 6.entry 32  no followUpDateExtension addresses status and intent and correct profile
+//param: status = e.g. active, intent = e.g. order and no = No of expected Careplans 
+RuleSet: testEncounter6CarePlanEntry32
+* test[=].action[+].assert.description = "Confirm that the Careplan for Encounter 6 entry 32 is of profiletype CarePlan and contains correct status: active, intent: order, no Followupdate, period.end and addresses"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(CarePlan).where((period.end.exists()) and (meta.profile = 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-carePlan') and (%resource.entry.where(resource.ofType(CareTeam).category.coding.code = '9401777d-bdc5-4f52-9804-63c8cae9a792').fullUrl in careTeam.reference) and (status = 'completed') and (intent = 'order') and ((%resource.entry.where(resource.ofType(Condition).code.coding.code = '5cfc9530-a193-4f66-9981-3b980ee9ea7b').fullUrl.first().replace('url','') in addresses.reference) and (%resource.entry.where(resource.ofType(Condition).code.coding.code = '5e95db73-4d16-4084-93a3-595c0650b160').fullUrl.first().replace('url','') in addresses.reference)) and (extension.where(url= 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-follow-up-date-extension').exists().not())).count() = 1"
+* test[=].action[=].assert.warningOnly = false
+
+//test Careplan specific for encounter 6.entry 33 followUpDateExtension addresses status and intent and correct profile
+//param: status = e.g. active, intent = e.g. order and no = No of expected Careplans 
+RuleSet: testEncounter6CarePlanEntry33
+* test[=].action[+].assert.description = "Confirm that the Careplan for Encounter 6 entry 33 is of profiletype CarePlan and contains correct status: active, intent: order, Followupdate, no period.end and addresses"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(CarePlan).where((period.end.exists().not()) and ((extension.where(url= 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-follow-up-date-extension').value.reference) = (%resource.entry.where(resource.ofType(Encounter)).fullUrl.replace('url',''))) and (meta.profile = 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-carePlan') and (%resource.entry.where(resource.ofType(CareTeam).category.coding.code = '9401777d-bdc5-4f52-9804-63c8cae9a792').fullUrl in careTeam.reference) and (status = 'active') and (intent = 'order') and ((%resource.entry.where(resource.ofType(Condition).code.coding.code = '5cfc9530-a193-4f66-9981-3b980ee9ea7b').fullUrl.first().replace('url','') in addresses.reference) and (%resource.entry.where(resource.ofType(Condition).code.coding.code = '5e95db73-4d16-4084-93a3-595c0650b160').fullUrl.first().replace('url','') in addresses.reference))).count()  = 1"
 * test[=].action[=].assert.warningOnly = false
 
 

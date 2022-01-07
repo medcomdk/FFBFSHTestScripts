@@ -76,6 +76,12 @@ RuleSet: CreateFfbReportCaseChangingCaseAppropriation(number, fixture)
 * insert testClinicalImpressionBasedOnOneServiceRequest
 
 // Test Observation for specific combination of status, code and value
-* insert testObservationCodeAndValue(final, effe55c7-572c-4a99-8fb4-2a9dda2f6572, dd628e73-d6c9-4837-a2b8-aa62d73bd6ae)
-* insert testObservationCodeAndValue(final, 712744002, 1e971d84-10a4-4ef8-a8b3-0daa4c7d088a)
-* insert testObservationCodeAndValue(final, 712744002, b4c01aa8-82fd-44e4-83ff-ca19ec02c779)
+* insert testObservationStatusAndCodeAndValue(final, effe55c7-572c-4a99-8fb4-2a9dda2f6572, dd628e73-d6c9-4837-a2b8-aa62d73bd6ae)
+* insert testObservationStatusAndCodeAndValue(final, 712744002, 1e971d84-10a4-4ef8-a8b3-0daa4c7d088a)
+* insert testObservationStatusAndCodeAndValue(final, 712744002, b4c01aa8-82fd-44e4-83ff-ca19ec02c779)
+
+
+//CarePlan test
+* insert testEncounter6CarePlanEntry31
+* insert testEncounter6CarePlanEntry32
+* insert testEncounter6CarePlanEntry33
