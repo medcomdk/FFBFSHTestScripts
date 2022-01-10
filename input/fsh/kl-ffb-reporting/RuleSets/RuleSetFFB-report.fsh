@@ -172,7 +172,7 @@ RuleSet: testClinicalImpressionExists
 RuleSet: testClinicalImpressionBasedOnOneServiceRequest
 * test[=].action[+].assert.description = "Confirm that the bundle contains one ClinicalImpression that is BasedOnServiceRequest"
 * test[=].action[=].assert.direction = #request
-* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(ClinicalImpression).extension.where(url = 'http://kl.dk/fhir/common/caresocial/StructureDefinition/BasedOnServiceRequest').value.reference = %resource.entry.where(resource.ofType(ServiceRequest)).fullUrl.replace('uri', 'string')"
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(ClinicalImpression).extension.where(url = 'http://kl.dk/fhir/common/caresocial/StructureDefinition/BasedOnServiceRequest').count() = 1"
 * test[=].action[=].assert.warningOnly = false
 
 RuleSet: testEffectiveDateTimeLtBundleTime
@@ -313,6 +313,13 @@ RuleSet: testCarePlanOfTypeInterventionCount(no)
 * test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(CarePlan).where((period.end.exists().not()) and (status = 'active') and (intent = 'order') and (meta.profile = 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-intervention')).count() = {no}"
 * test[=].action[=].assert.warningOnly = false
 
+//test intervention specific for encounter 7.  period.end , status = active, intent = order and profile Intervention.
+RuleSet: testCarePlanOfTypeInterventionPeriodEndExistsCount(no)
+* test[=].action[+].assert.description = "Confirm that the Careplan contains {no} interventions and status: active, intent: order and period.end exists"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(CarePlan).where((period.end.exists()) and (status = 'active') and (intent = 'order') and (meta.profile = 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-intervention')).count() = {no}"
+* test[=].action[=].assert.warningOnly = false
+
 //test Careplan specific for encounter 5. addresses status and intent
 //param: status = e.g. active, intent = e.g. order and no = No of expected Careplans 
 RuleSet: testCarePlanAddressesCount(careTeamCategory, status, intent, no)
@@ -351,6 +358,20 @@ RuleSet: testEncounter6CarePlanEntry33
 * test[=].action[+].assert.description = "Confirm that the Careplan for Encounter 6 entry 33 is of profiletype CarePlan and contains correct status: active, intent: order, Followupdate, no period.end and addresses"
 * test[=].action[=].assert.direction = #request
 * test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(CarePlan).where((period.end.exists().not()) and ((extension.where(url= 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-follow-up-date-extension').value.reference) = (%resource.entry.where(resource.ofType(Encounter)).fullUrl.replace('url',''))) and (meta.profile = 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-carePlan') and (%resource.entry.where(resource.ofType(CareTeam).category.coding.code = '9401777d-bdc5-4f52-9804-63c8cae9a792').fullUrl in careTeam.reference) and (status = 'active') and (intent = 'order') and ((%resource.entry.where(resource.ofType(Condition).code.coding.code = '5cfc9530-a193-4f66-9981-3b980ee9ea7b').fullUrl.first().replace('url','') in addresses.reference) and (%resource.entry.where(resource.ofType(Condition).code.coding.code = '5e95db73-4d16-4084-93a3-595c0650b160').fullUrl.first().replace('url','') in addresses.reference))).count()  = 1"
+* test[=].action[=].assert.warningOnly = false
+
+//test Careplan specific for encounter 7.entry 13  addresses, status and intent and correct profile
+//param: status = e.g. active, intent = e.g. order and no = No of expected Careplans 
+RuleSet: testEncounter7CarePlanEntry13
+* test[=].action[+].assert.description = "Confirm that the Careplan for Encounter 7  is of profiletype CarePlan and contains correct status: completed, intent: order, period.end after period.start and addresses"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(CarePlan).where((period.end >= period.start)) and ((extension.where(url= 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-follow-up-date-extension').value.reference) = (%resource.entry.where(resource.ofType(Encounter)).fullUrl.replace('url',''))) and (meta.profile = 'http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-carePlan') and (%resource.entry.where(resource.ofType(CareTeam).category.coding.code = '498fe92c-d7f7-41cd-9404-5b38fe113be0').fullUrl in careTeam.reference) and (status = 'completed') and (intent = 'order') and ((%resource.entry.where(resource.ofType(Condition).code.coding.code = '5cfc9530-a193-4f66-9981-3b980ee9ea7b').fullUrl.first().replace('url','') in addresses.reference) and (%resource.entry.where(resource.ofType(Condition).code.coding.code = '5e95db73-4d16-4084-93a3-595c0650b160').fullUrl.first().replace('url','') in addresses.reference))).count()  = 1"
+* test[=].action[=].assert.warningOnly = false
+
+RuleSet: testCareTeamCategoryCount(category, noOfOccur)
+* test[=].action[+].assert.description = "Confirm that the CareTeam occure {noOfOccur} with category: {category}"
+* test[=].action[=].assert.direction = #request
+* test[=].action[=].assert.expression = "Bundle.entry.resource.ofType(CareTeam).where(category.coding.code = '{category}').count() = {noOfOccur}"
 * test[=].action[=].assert.warningOnly = false
 
 
