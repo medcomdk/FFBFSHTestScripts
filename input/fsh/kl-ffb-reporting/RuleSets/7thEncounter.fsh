@@ -7,8 +7,8 @@ RuleSet: CreateFfbReportCaseCaseClosing(number, fixture)
 
 
 //Only relevant for n+1 test
-//I* insert testPatientIdentifirEqualsFirst
-//I* insert testConditionsExists
+* insert testPatientIdentifirEqualsFirst
+* insert testConditionsExists
 //* insert testConditionRecordedDateLtBundleTime
 
 //validation
@@ -19,13 +19,13 @@ RuleSet: CreateFfbReportCaseCaseClosing(number, fixture)
 //* insert testCarePlanEvaluationCode(dd628e73-d6c9-4837-a2b8-aa62d73bd6ae) 
 
 //Test for specefic ConditionCode "Anden udviklingsforstyrrelse" occurs 2 times for encounter 5
-//I* insert testConditionCodeCount(5cfc9530-a193-4f66-9981-3b980ee9ea7b,2)
+* insert testConditionCodeCount(5cfc9530-a193-4f66-9981-3b980ee9ea7b,2)
 
 //Test for specefic ConditionCode "Selvmordstanker eller -forsøg" for encounter 5
-//I* insert testConditionCode(5cfc9530-a193-4f66-9981-3b980ee9ea7b)
+* insert testConditionCode(5cfc9530-a193-4f66-9981-3b980ee9ea7b)
 
 // Test for Observation with param: Code: "FFB støttebehovsvurdering" and value ="Let støttebehov"
-//I* insert testObservationCodeAndValue(effe55c7-572c-4a99-8fb4-2a9dda2f6572,ae9f388a-91c3-46cf-af55-f81952f2977c)
+* insert testObservationCodeAndValue(effe55c7-572c-4a99-8fb4-2a9dda2f6572,ae9f388a-91c3-46cf-af55-f81952f2977c)
 
 //Test bundle contains 3 Interventions
 //* insert testCarePlanOfTypeInterventionCount(3)
@@ -36,31 +36,29 @@ RuleSet: CreateFfbReportCaseCaseClosing(number, fixture)
 */
 
 //Test that the MunicipalityCaseNumber in carePlan is equal to first Encounter.
-//I* insert testCarePlanMunicipalityCaseNumber
+* insert testCarePlanMunicipalityCaseNumber
 
 
 //Test that th MunicipalityCaseNumber eq first encounter.
-//I* insert testMunicipalityCaseNumberEqualsFist
+* insert testMunicipalityCaseNumberEqualsFist
 
 //Test ServiceRequest equals first encounter 1
-//I* insert testServiceRequestEqualsFirst
+* insert testServiceRequestEqualsFirst
 
 //Test that ServiceRequest has correct status, intent and numbers of instances.
-//I* insert testServiceRequestStatusIntentCount(active, proposal, 1)
+* insert testServiceRequestStatusIntentCount(active, proposal, 1)
 
-//I* insert testConditionClinicalStatusActive
-//I* insert testConditionRecordedDateLtBundleTime
-//I* insert testConditionVerificationStatusEqConfirmed
+* insert testConditionClinicalStatusActive
+* insert testConditionRecordedDateLtBundleTime
+* insert testConditionVerificationStatusEqConfirmed
 
 
 //Test  that there exist 1 ClinicalImpression that 
 //contains 1 BasedOnServiceRequest
-* insert testClinicalImpressionBasedOnOneServiceRequest //ændre til specifict en
+* insert testClinicalImpressionBasedOnOneServiceRequest 
 
-* insert testEffectiveDateTimeLtBundleTime
 * insert testClinicalImpressionStatus(completed)
 
-* insert testCareplanStartbeforeBundletime
 * insert testCarePlanOfTypeInterventionPeriodEndExistsCount(3)
 
 //Params: status, code, value

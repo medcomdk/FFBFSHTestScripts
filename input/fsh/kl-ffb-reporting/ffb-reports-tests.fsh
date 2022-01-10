@@ -10,16 +10,16 @@ InstanceOf: TestScript
 //* insert  CreateFfbReportCaseOpeningTest( 1, /FHIRSandbox/MedCom/401-ffb-reporting/_reference/resources/01Encounter.xml)
 
 /*2nd documentation phase*/
-//I* insert  CreateFfbReportCaseinsightTest( 2, /FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/02Encounter.xml)
+* insert  CreateFfbReportCaseinsightTest( 2, /FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/02Encounter.xml)
 
 //3rd documentation phase 
-//I* insert CreateFfbReportCaseassesment(3, /FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/03Encounter.xml)
+* insert CreateFfbReportCaseassesment(3, /FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/03Encounter.xml)
 
 //5th documentation phase 
-//I* insert CreateFfbReportCaseAppropriation(5, /FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/05Encounter.xml)
+* insert CreateFfbReportCaseAppropriation(5, /FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/05Encounter.xml)
 
 //6th encounter / Sixth documentation phase – Changing case appropriation
-//I* insert CreateFfbReportCaseChangingCaseAppropriation(6, /FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/06Encounter.xml)
+* insert CreateFfbReportCaseChangingCaseAppropriation(6, /FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/06Encounter.xml)
 
 //7th encounter encounter / Seventh documentation phase – Case closing
 * insert CreateFfbReportCaseCaseClosing(7, /FHIRSandbox/MedCom/401-ffb-reporting/IG-0-9-0/_reference/resources/07Encounter.xml)
