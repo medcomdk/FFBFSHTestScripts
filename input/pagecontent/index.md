@@ -4,8 +4,8 @@ The testscript in this IG are created for Touchstone test suites.
 [TestSuite Encounter 1-7](https://touchstone.aegis.net/touchstone/conformance/current?suite=FHIR4-0-1-FFB-Encounter1-7-Cli-Client)
 
 ### MedCom FFB-Reporting testscripts
-The approach for this test is to demonstrate that SUT can perform the steps under the [FFB IG Example page] (http://build.fhir.org/ig/hl7dk/kl-ffb-reporting/example) The test scripts will pay attention to correct use of: Evaluation, addresses, severity, targetGroup and so on.
-This test will only prove that SUT is able to create a number of correct instance equivalent to the [FFB IG Examples] (http://build.fhir.org/ig/hl7dk/kl-ffb-reporting/example) The test will not deal with GUI test or any user interactions with the system. 
+The approach for this test is to demonstrate that SUT can perform the steps under the [FFB IG Example page](http://build.fhir.org/ig/hl7dk/kl-ffb-reporting/example) The test scripts will pay attention to correct use of: Evaluation, addresses, severity, targetGroup and so on.
+This test will only prove that SUT is able to create a number of correct instance equivalent to the [FFB IG Examples](http://build.fhir.org/ig/hl7dk/kl-ffb-reporting/example) The test will not deal with GUI test or any user interactions with the system. 
 Please let us know if you find any errors in the test or have any feedback [Zulip](https://chat.fhir.org) channel: #MedComTestTouchStone 
 
 
