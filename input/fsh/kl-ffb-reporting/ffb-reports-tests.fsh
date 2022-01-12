@@ -6,7 +6,7 @@ InstanceOf: TestScript
 * id = "ffb-encounter-2-3"
 * name = "Encounter phase 2-3"
 * title = "Encounter phase 2-3"
-* description = "Testing correct use of encounter phase 2-3"
+* description = "Testing correct use of encounter phase 2-7"
 //* insert  CreateFfbReportCaseOpeningTest( 1, /FHIRSandbox/MedCom/401-ffb-reporting/_reference/resources/01Encounter.xml)
 
 /*2nd documentation phase*/
