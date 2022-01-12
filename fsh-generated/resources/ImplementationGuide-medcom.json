@@ -27,9 +27,9 @@
     "resource": [
       {
         "reference": {
-          "reference": "TestScript/ffb-encounter-2-3"
+          "reference": "TestScript/ffb-encounter-1-7"
         },
-        "name": "ffb-1st-encounter",
+        "name": "ffb-encounter",
         "exampleBoolean": true
       }
     ],

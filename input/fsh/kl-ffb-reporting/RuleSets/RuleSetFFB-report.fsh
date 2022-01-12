@@ -435,7 +435,7 @@ RuleSet: variableBundleTime(number)
 RuleSet: profileFfb
 * profile.id = "kl-ffb-reporting-profile"
 * profile.reference = "http://ffb/reporting/kl.dk/1.0/StructureDefinition/kl-reporting-ffb-deliveryReport" 
-
+                        
 RuleSet: fixtureFfb(number, fixture)
 * fixture[+].id = "fix-bundle-create-{number}"
 * fixture[=].autocreate = false

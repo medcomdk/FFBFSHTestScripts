@@ -1,6 +1,6 @@
 {
   "resourceType": "TestScript",
-  "id": "ffb-encounter-2-3",
+  "id": "ffb-encounter-1-7",
   "meta": {
     "profile": [
       "http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"
@@ -23,9 +23,9 @@
     }
   ],
   "copyright": "MedCom 2021",
-  "name": "Encounter phase 2-3",
-  "title": "Encounter phase 2-3",
-  "description": "Testing correct use of encounter phase 2-3",
+  "name": "Encounter phase 1-7",
+  "title": "Encounter phase 1-7",
+  "description": "Testing correct use of encounter phase 1-7 for KL-FFB",
   "origin": [
     {
       "index": 1,
