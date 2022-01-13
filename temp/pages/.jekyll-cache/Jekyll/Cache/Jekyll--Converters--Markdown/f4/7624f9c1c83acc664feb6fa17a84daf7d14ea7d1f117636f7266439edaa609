@@ -1,12 +1,6 @@
-I"8<p><!-- white space is critical inside of capture --></p>
-<div class="markdown-toc">
-<ul id="markdown-toc">
-  <li><a href="#background" id="markdown-toc-background">Background</a></li>
-  <li><a href="#medcom-ffb-reporting-testscripts" id="markdown-toc-medcom-ffb-reporting-testscripts">MedCom FFB-Reporting testscripts</a></li>
-  <li><a href="#get-started" id="markdown-toc-get-started">Get started</a></li>
-  <li><a href="#medcom-ffb-testflow" id="markdown-toc-medcom-ffb-testflow">MedCom FFB testflow</a></li>
-</ul>
-
+I"+<p><!-- white space is critical inside of capture --></p>
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
 <h3 id="background">Background</h3>
 
@@ -35,7 +29,8 @@ Please let us know if you find any errors in the test or have any feedback <a hr
 <ol>
   <li>
     <p>Self testing
-SUT passes the  Touchstone TestSuite <a href="https://touchstone.aegis.net/touchstone/conformance/current?suite=FHIR4-0-1-FFB-Encounter1-7-Client">FFB-Encounter1-7-Client</a></p>
+SUT passes the  Touchstone TestSuite <a href="https://touchstone.aegis.net/touchstone/conformance/current?suite=FHIR4-0-1-FFB-Encounter1-7-Client">FFB-Encounter1-7-Client</a> 
+<a href="TouchstoneTestStepByStep.html">Quick Guide to test run</a></p>
   </li>
   <li>
     <p>Request a test from MedCom 

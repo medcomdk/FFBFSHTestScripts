@@ -14,7 +14,7 @@
   "toolingVersionFull": "5.0.0-snapshot1 (3)",
   "totalFiles": 2,
   "processedFiles": 13,
-  "genDate": "Thu, Jan 13, 2022 14:19+0100",
+  "genDate": "Thu, Jan 13, 2022 15:00+0100",
   "genDay": "13/01/2022",
   "ig": {
     "id": "medcom",
@@ -33,7 +33,7 @@
         ]
       }
     ],
-    "date": "2022-01-13T14:19:38+01:00",
+    "date": "2022-01-13T15:00:15+01:00",
     "description": "Testscripts for FFB-reporting",
     "fhirVersion": "4.0.1"
   }

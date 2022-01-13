@@ -12,11 +12,11 @@ This test will only prove that SUT is able to create a number of correct instanc
 Please let us know if you find any errors in the test or have any feedback [Zulip](https://chat.fhir.org) channel: #MedComTestTouchStone 
 
 
-### Get started
-* Request a free Touchstone “Starter” license from MedCom
+### Request a free Touchstone “Starter” license from MedCom
 * Create a Touchstone [user account](https://touchstone.aegis.net/touchstone/register):
 * Create your [organization on Touchstone](https://touchstone.aegis.net/touchstone/userguide/html/registration/membership.html#new-organization)
 * Send an e-mail to fhir@medcom.dk with the created organization name (one license per Vendor)
+* MedCom will upgrade your license 
 
 
 ### MedCom FFB testflow
@@ -26,7 +26,7 @@ The MedCom FFB testflow will consist of the steps described below.
 
 1. Self testing
 SUT passes the  Touchstone TestSuite [FFB-Encounter1-7-Client](https://touchstone.aegis.net/touchstone/conformance/current?suite=FHIR4-0-1-FFB-Encounter1-7-Client) 
-[Quick Guide](TouchstoneTestStepByStep.html) to test run
+[Quick Guide to test run](TouchstoneTestStepByStep.html) 
 
 2. Request a test from MedCom 
 [MedCom test](https://www.medcom.dk/standarder/testcenter) follow the instructions under “Øvrigt testforløb” it’s for free "GRATIS". 

@@ -25,7 +25,8 @@ The MedCom FFB testflow will consist of the steps described below.
 
 
 1. Self testing
-SUT passes the  Touchstone TestSuite [FFB-Encounter1-7-Client](https://touchstone.aegis.net/touchstone/conformance/current?suite=FHIR4-0-1-FFB-Encounter1-7-Client)
+SUT passes the  Touchstone TestSuite [FFB-Encounter1-7-Client](https://touchstone.aegis.net/touchstone/conformance/current?suite=FHIR4-0-1-FFB-Encounter1-7-Client) 
+[Quick Guide to test run](TouchstoneTestStepByStep.html) 
 
 2. Request a test from MedCom 
 [MedCom test](https://www.medcom.dk/standarder/testcenter) follow the instructions under “Øvrigt testforløb” it’s for free "GRATIS". 
