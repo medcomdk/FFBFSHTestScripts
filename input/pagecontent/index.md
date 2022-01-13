@@ -35,7 +35,6 @@ Attach a screenshot from the passed [test suite](https://touchstone.aegis.net/to
 3. Live Test
 MedCom will invite you to an online test meeting where you must pass the test suite live. 
 
-4. Review of material 
-MedCom will review the bundle’s that has been sent in the test.
+4. MedCom will review the bundle’s that has been sent in the test.
 
 5. The test is passed, or we will inform you about the issues
