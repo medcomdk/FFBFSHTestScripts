@@ -30,7 +30,7 @@ SUT passes the  Touchstone TestSuite [FFB-Encounter1-7-Client](https://touchston
 
 2. Request a test from MedCom 
 [MedCom test](https://www.medcom.dk/standarder/testcenter) follow the instructions under “Øvrigt testforløb” it’s for free "GRATIS". 
-Attach a screenshot from the passed test suite: https://touchstone.aegis.net/touchstone/conformance/current  
+Attach a screenshot from the passed [test suite](https://touchstone.aegis.net/touchstone/conformance/current)   
 
 3. Live Test
 MedCom will invite you to an online test meeting where you must pass the test suite live. 
