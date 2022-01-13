@@ -17,7 +17,7 @@
   fhir:ImplementationGuide.name [ fhir:value "FFBreportingTestscripts"];
   fhir:ImplementationGuide.title [ fhir:value "FFB-reporting Testscripts"];
   fhir:ImplementationGuide.status [ fhir:value "draft"];
-  fhir:ImplementationGuide.date [ fhir:value "2021-12-20T15:19:43+01:00"^^xsd:dateTime];
+  fhir:ImplementationGuide.date [ fhir:value "2022-01-13T14:19:38+01:00"^^xsd:dateTime];
   fhir:ImplementationGuide.contact [
      fhir:index 0;
      fhir:ContactDetail.name [ fhir:value "MedCom" ];
@@ -296,11 +296,11 @@
          fhir:Extension.valueString [ fhir:value "TestScript" ]
        ];
        fhir:ImplementationGuide.definition.resource.reference [
-         fhir:link <http://example.org/fhir/fish/TestScript/ffb-encounter-2-3>;
-         fhir:Reference.reference [ fhir:value "TestScript/ffb-encounter-2-3" ]
+         fhir:link <http://example.org/fhir/fish/TestScript/ffb-encounter-1-7>;
+         fhir:Reference.reference [ fhir:value "TestScript/ffb-encounter-1-7" ]
        ];
-       fhir:ImplementationGuide.definition.resource.name [ fhir:value "ffb-1st-encounter" ];
-       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Testing correct use of encounter phase 2-3" ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "ffb-encounter" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Testing correct use of encounter phase 1-7 for KL-FFB" ];
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
      ];
      fhir:ImplementationGuide.definition.page [
@@ -311,6 +311,11 @@
          fhir:index 0;
          fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "index.html" ];
          fhir:ImplementationGuide.definition.page.title [ fhir:value "Home" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 1;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "TouchstoneTestStepByStep.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Touchstone Test Step By Step" ];
          fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
        ]
      ];

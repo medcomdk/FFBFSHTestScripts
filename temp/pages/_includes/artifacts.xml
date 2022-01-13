@@ -23,10 +23,10 @@
          <tbody>
             <tr>
                <td style="column-width:30%">
-                  <a href="TestScript-ffb-encounter-2-3.html"
-                     title="TestScript/ffb-encounter-2-3">ffb-1st-encounter</a>
+                  <a href="TestScript-ffb-encounter-1-7.html"
+                     title="TestScript/ffb-encounter-1-7">ffb-encounter</a>
                </td>
-               <td>{% capture desc %}Testing correct use of encounter phase 2-3{% endcapture %}
+               <td>{% capture desc %}Testing correct use of encounter phase 1-7 for KL-FFB{% endcapture %}
 {{ desc | markdownify}}</td>
             </tr>
          </tbody>

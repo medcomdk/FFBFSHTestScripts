@@ -11,7 +11,7 @@
   <name value="FFBreportingTestscripts"/>
   <title value="FFB-reporting Testscripts"/>
   <status value="draft"/>
-  <date value="2021-12-20T15:19:43+01:00"/>
+  <date value="2022-01-13T14:19:38+01:00"/>
   <contact>
     <name value="MedCom"/>
     <telecom>
@@ -197,10 +197,10 @@
         <valueString value="TestScript"/>
       </extension>
       <reference>
-        <reference value="TestScript/ffb-encounter-2-3"/>
+        <reference value="TestScript/ffb-encounter-1-7"/>
       </reference>
-      <name value="ffb-1st-encounter"/>
-      <description value="Testing correct use of encounter phase 2-3"/>
+      <name value="ffb-encounter"/>
+      <description value="Testing correct use of encounter phase 1-7 for KL-FFB"/>
       <exampleBoolean value="true"/>
     </resource>
     <page>
@@ -210,6 +210,11 @@
       <page>
         <nameUrl value="index.html"/>
         <title value="Home"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <nameUrl value="TouchstoneTestStepByStep.html"/>
+        <title value="Touchstone Test Step By Step"/>
         <generation value="markdown"/>
       </page>
     </page>

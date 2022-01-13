@@ -1,0 +1,58 @@
+I"8<p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#background" id="markdown-toc-background">Background</a></li>
+  <li><a href="#medcom-ffb-reporting-testscripts" id="markdown-toc-medcom-ffb-reporting-testscripts">MedCom FFB-Reporting testscripts</a></li>
+  <li><a href="#get-started" id="markdown-toc-get-started">Get started</a></li>
+  <li><a href="#medcom-ffb-testflow" id="markdown-toc-medcom-ffb-testflow">MedCom FFB testflow</a></li>
+</ul>
+
+</div>
+<h3 id="background">Background</h3>
+
+<h4 id="glossary">Glossary</h4>
+<p>SUT = System Under Test</p>
+
+<p>The testscript in this IG are created for Touchstone test suites.
+<a href="https://touchstone.aegis.net/touchstone/conformance/current?suite=FHIR4-0-1-FFB-Encounter1-7-Cli-Client">TestSuite Encounter 1-7</a></p>
+
+<h3 id="medcom-ffb-reporting-testscripts">MedCom FFB-Reporting testscripts</h3>
+<p>The approach for this test is to demonstrate that SUT can perform the steps under the <a href="http://build.fhir.org/ig/hl7dk/kl-ffb-reporting/example">FFB IG Example page</a> The test scripts will pay attention to correct use of: Evaluation, addresses, severity, targetGroup and so on.
+This test will only prove that SUT is able to create a number of correct instances equivalent to the <a href="http://build.fhir.org/ig/hl7dk/kl-ffb-reporting/example">FFB IG Examples</a> The test will not deal with GUI test or any user interactions with the system. 
+Please let us know if you find any errors in the test or have any feedback <a href="https://chat.fhir.org">Zulip</a> channel: #MedComTestTouchStone</p>
+
+<h3 id="get-started">Get started</h3>
+<ul>
+  <li>Request a free Touchstone “Starter” license from MedCom</li>
+  <li>Create a Touchstone <a href="https://touchstone.aegis.net/touchstone/register">user account</a>:</li>
+  <li>Create your <a href="https://touchstone.aegis.net/touchstone/userguide/html/registration/membership.html#new-organization">organization on Touchstone</a></li>
+  <li>Send an e-mail to fhir@medcom.dk with the created organization name (one license per Vendor)</li>
+</ul>
+
+<h3 id="medcom-ffb-testflow">MedCom FFB testflow</h3>
+<p>The MedCom FFB testflow will consist of the steps described below.</p>
+
+<ol>
+  <li>
+    <p>Self testing
+SUT passes the  Touchstone TestSuite <a href="https://touchstone.aegis.net/touchstone/conformance/current?suite=FHIR4-0-1-FFB-Encounter1-7-Client">FFB-Encounter1-7-Client</a></p>
+  </li>
+  <li>
+    <p>Request a test from MedCom 
+<a href="https://www.medcom.dk/standarder/testcenter">MedCom test</a> follow the instructions under “Øvrigt testforløb” it’s for free “GRATIS”. 
+Attach a screenshot from the passed test suite: https://touchstone.aegis.net/touchstone/conformance/current</p>
+  </li>
+  <li>
+    <p>Live Test
+MedCom will invite you to an online test meeting where you must pass the test suite live.</p>
+  </li>
+  <li>
+    <p>Review of material 
+MedCom will review the bundle’s that has been sent in the test.</p>
+  </li>
+  <li>
+    <p>The test is passed, or we will inform you about the issues</p>
+  </li>
+</ol>
+
+:ET

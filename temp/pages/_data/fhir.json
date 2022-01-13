@@ -5,17 +5,17 @@
   "igName": "FFBreportingTestscripts",
   "packageId": "medcom",
   "igVer": "0.1.0",
-  "errorCount": 3,
+  "errorCount": 6,
   "version": "4.0.1",
   "revision": "a53ec6ee1b",
   "versionFull": "4.0.1-a53ec6ee1b",
-  "toolingVersion": "4.6.0",
+  "toolingVersion": "5.0.0-snapshot1",
   "toolingRevision": "3",
-  "toolingVersionFull": "4.6.0 (3)",
+  "toolingVersionFull": "5.0.0-snapshot1 (3)",
   "totalFiles": 2,
-  "processedFiles": 11,
-  "genDate": "Mon, Dec 20, 2021 15:19+0100",
-  "genDay": "20/12/2021",
+  "processedFiles": 13,
+  "genDate": "Thu, Jan 13, 2022 14:19+0100",
+  "genDay": "13/01/2022",
   "ig": {
     "id": "medcom",
     "name": "FFBreportingTestscripts",
@@ -33,7 +33,7 @@
         ]
       }
     ],
-    "date": "2021-12-20T15:19:43+01:00",
+    "date": "2022-01-13T14:19:38+01:00",
     "description": "Testscripts for FFB-reporting",
     "fhirVersion": "4.0.1"
   }

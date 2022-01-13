@@ -17,7 +17,7 @@
    <name value="FFBreportingTestscripts"/>
    <title value="FFB-reporting Testscripts"/>
    <status value="draft"/>
-   <date value="2021-12-20T15:19:43+01:00"/>
+   <date value="2022-01-13T14:19:38+01:00"/>
    <contact>
       <name value="MedCom"/>
       <telecom>
@@ -60,13 +60,13 @@
             <valueString value="TestScript"/>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
-            <valueUri value="TestScript-ffb-encounter-2-3.html"/>
+            <valueUri value="TestScript-ffb-encounter-1-7.html"/>
          </extension>
          <reference>
-            <reference value="TestScript/ffb-encounter-2-3"/>
+            <reference value="TestScript/ffb-encounter-1-7"/>
          </reference>
-         <name value="ffb-1st-encounter"/>
-         <description value="Testing correct use of encounter phase 2-3"/>
+         <name value="ffb-encounter"/>
+         <description value="Testing correct use of encounter phase 1-7 for KL-FFB"/>
          <exampleBoolean value="true"/>
          <groupingId value="-ex-example"/>
       </resource>
@@ -80,12 +80,17 @@
             <generation value="markdown"/>
          </page>
          <page>
+            <nameUrl value="TouchstoneTestStepByStep.html"/>
+            <title value="Touchstone Test Step By Step"/>
+            <generation value="markdown"/>
+         </page>
+         <page>
             <nameUrl value="artifacts.html"/>
             <title value="Artifacts Summary"/>
             <generation value="html"/>
             <page>
-               <nameUrl value="TestScript-ffb-encounter-2-3.html"/>
-               <title value="ffb-1st-encounter"/>
+               <nameUrl value="TestScript-ffb-encounter-1-7.html"/>
+               <title value="ffb-encounter"/>
                <generation value="generated"/>
             </page>
          </page>

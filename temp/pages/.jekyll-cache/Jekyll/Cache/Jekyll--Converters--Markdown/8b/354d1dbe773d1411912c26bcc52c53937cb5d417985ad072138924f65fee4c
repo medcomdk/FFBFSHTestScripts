@@ -1,0 +1,24 @@
+I"�<p><!-- white space is critical inside of capture --></p>
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
+</div>
+<h3 id="how-to-do-the-ffb-test-in-touchstone">How to do the FFB test in Touchstone</h3>
+
+<h4 id="pre-request">Pre request</h4>
+<ul>
+  <li>create a user and register your organization in Touchstone- See under the (index page)[index.html]</li>
+</ul>
+
+<h4 id="guide">Guide</h4>
+
+<ol>
+  <li>
+    <p>Create a <a href="https://touchstone.aegis.net/touchstone/userguide/html/test-systems/creating.html">TouchstoneTestsystem</a> remember to create it as a “FHIR-client”</p>
+  </li>
+  <li>
+    <p>Run the test suite <a href="https://touchstone.aegis.net/touchstone/conformance/current?suite=FHIR4-0-1-FFB-Encounter1-7-Cli-Client">TestSuite Encounter 1-7</a>
+ 2.1 For more information about <a href="https://touchstone.aegis.net/touchstone/userguide/html/client-testing/launching.html">how to run a test</a></p>
+  </li>
+</ol>
+
+:ET

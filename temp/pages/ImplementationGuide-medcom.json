@@ -10,7 +10,7 @@
   "name": "FFBreportingTestscripts",
   "title": "FFB-reporting Testscripts",
   "status": "draft",
-  "date": "2021-12-20T15:19:43+01:00",
+  "date": "2022-01-13T14:19:38+01:00",
   "contact": [
     {
       "name": "MedCom",
@@ -313,10 +313,10 @@
           }
         ],
         "reference": {
-          "reference": "TestScript/ffb-encounter-2-3"
+          "reference": "TestScript/ffb-encounter-1-7"
         },
-        "name": "ffb-1st-encounter",
-        "description": "Testing correct use of encounter phase 2-3",
+        "name": "ffb-encounter",
+        "description": "Testing correct use of encounter phase 1-7 for KL-FFB",
         "exampleBoolean": true
       }
     ],
@@ -328,6 +328,11 @@
         {
           "nameUrl": "index.html",
           "title": "Home",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "TouchstoneTestStepByStep.html",
+          "title": "Touchstone Test Step By Step",
           "generation": "markdown"
         }
       ]
