@@ -34,3 +34,4 @@ MedCom will invite you to an online test meeting where you must pass the test su
 4. MedCom will review the Bundles that has been sent during the test.
 
 5. The test is passed, or we will inform you about the issues.
+ 
